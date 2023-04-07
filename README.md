@@ -131,3 +131,8 @@ console.log(JSON.stringify(tw))
 uglifyjs out.js --mangle --output out2.js
 
 uglifyjs out.js --compress --mangle --output out3.js
+
+
+作者： 陈不不
+邮箱：2833844911@qq.com
+
