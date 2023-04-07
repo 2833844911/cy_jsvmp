@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  },
+  "dependencies": {
+    "@babel/generator": "^7.20.5",
+    "@babel/parser": "^7.20.7",
+    "@babel/traverse": "^7.20.5"
+  }
+}
