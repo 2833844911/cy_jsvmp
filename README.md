@@ -19,6 +19,9 @@ jiajianbian.js 快速加密版
 
 
 main_pro 升级版，带线程 // 防止反编译算法还原
+
+下面例子中的特殊函数是走的另一vm这个比正常函数走的vm要难
+
 ```javascript
 
 // 线程版例子
@@ -83,6 +86,7 @@ function cbb_op(e,b){
   return 0
 }
 
+// 没有带cbb_ 属于正常函数
 function sign(){
   var mm_ = "2833844911"
   var mm2_ = "udiaudisaoduas"
