@@ -139,4 +139,4 @@ uglifyjs out.js --compress --mangle --output out3.js
 
 ### 作者： 陈不不
 ### 邮箱：2833844911@qq.com
-
+已经开设反编译jsvmp课程了哦，需要报名的可以咨询wx: Chankipen
