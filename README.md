@@ -11,7 +11,7 @@ npm install -g traceur
 
 https://blog.csdn.net/qq_46013295/article/details/128481895
 
-main.js 正常调试版
+main.js 正常调试版 (不使用)
 
 jiamian.js 加密版  // 重新打乱指令集
 
