@@ -11,7 +11,7 @@ function cltothis(cythis, poolList,off){
     }
 }
 
-
+window._fetch = window.fetch
 function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
     var cbb_xc = []
 
@@ -622,6 +622,9 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
                 }else if (a3 == window.alert){
 
                     a4 =  alert(...args)
+                }else if (a3 == window._fetch){
+
+                    a4 =  _fetch(...args)
                 }else{
                     a4 = a3.apply(all,args)
 
