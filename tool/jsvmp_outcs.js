@@ -9,7 +9,7 @@ function cltothis(cythis, poolList,off){
 
     }
 }
-
+window._fetch = window.fetch
 
 function cbb_jsvmp(all, duei, start, shuz,argsList, ogg, op) {
 
@@ -603,7 +603,10 @@ function cbb_jsvmp(all, duei, start, shuz,argsList, ogg, op) {
                         }
                         else if (a3 == window.RegExp){
                             a4 =  RegExp(...args)
-                        }else if (a3 == window.alert){
+                        }else if (a3 == window._fetch){
+
+                    a4 =  _fetch(...args)
+                }else if (a3 == window.alert){
 
                             a4 =  alert(...args)
                     }else{
