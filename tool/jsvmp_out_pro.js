@@ -11,7 +11,7 @@ function cltothis(cythis, poolList,off){
     }
 }
 
-window._fetch = window.fetch
+this._fetch = this.fetch
 function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
     var cbb_xc = []
 
