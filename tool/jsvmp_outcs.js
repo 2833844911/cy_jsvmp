@@ -9,7 +9,7 @@ function cltothis(cythis, poolList,off){
 
     }
 }
-
+function Cbb(){}
 this._fetch = this.fetch
 
 function cbb_jsvmp(all, duei, start, shuz,argsList, ogg, op) {
