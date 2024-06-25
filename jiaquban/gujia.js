@@ -1048,7 +1048,7 @@ function cltothis(cythis, poolList, off) {
     off == 1 ? cythis[i] = undefined : cythis[i] = poolList[i];
   }
 }
-window._fetch = window.fetch;
+this._fetch = this.fetch;
 function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
   function getproto(s, d, e) {
     let dt = s;
