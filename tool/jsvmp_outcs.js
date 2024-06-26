@@ -10,7 +10,7 @@ function cltothis(cythis, poolList,off){
     }
 }
 function Cbb(){}
-this._fetch = this.fetch
+
 
 function cbb_jsvmp(all, duei, start, shuz,argsList, ogg, op) {
 
@@ -657,7 +657,8 @@ function cbb_jsvmp(all, duei, start, shuz,argsList, ogg, op) {
     }
 }
 
-if (!this.window){var window = {"exports": exports,"require": require,"module":module,"__dirname":__dirname,"__filename":__filename};window.__proto__=global;}
+if (!this.window){var window = {"exports": exports,"require": require,"module":module,"__dirname":__dirname,"__filename":__filename};window.__proto__=global;global._fetch = global.fetch}else{window._fetch = window.fetch}
+
 offnew = 0
 window['variablePool'] = {}
 window['zhili'] = []
