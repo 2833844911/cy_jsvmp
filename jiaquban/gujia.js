@@ -1,4 +1,4 @@
-
+function Cbb(){}
 function cshduei() {
   this.cf = function () {
     var t;
