@@ -11,7 +11,6 @@ function cltothis(cythis, poolList,off){
     }
 }
 
-this._fetch = this.fetch
 function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
     var cbb_xc = []
 
@@ -787,6 +786,7 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
 if (!this.window){var cywindow = {"exports": exports,"require": require,"module":module,"__dirname":__dirname,"__filename":__filename};cywindow.__proto__=global;window=global};
 offnew = 0
 
+window._fetch = window.fetch
 cywindow['variablePool'] = {}
 cywindow['zhili'] = []
 cltothis(cywindow['variablePool'],changlc.awcbb_yhh_fun0.variablePool)
