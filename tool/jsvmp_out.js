@@ -549,6 +549,12 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
     }
   }
 }
+if (!this.window) {
+
+  global._fetch = global.fetch;
+}else{
+  window._fetch = window.fetch;
+}
 var ruc = this;
 this.offnew = 0;
 ruc['variablePool'] = {};
