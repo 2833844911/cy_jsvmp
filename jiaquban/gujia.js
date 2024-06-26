@@ -1048,7 +1048,7 @@ function cltothis(cythis, poolList, off) {
     off == 1 ? cythis[i] = undefined : cythis[i] = poolList[i];
   }
 }
-this._fetch = this.fetch;
+
 function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
   function getproto(s, d, e) {
     let dt = s;
@@ -12548,6 +12548,9 @@ if (!this.window) {
     "__filename": __filename
   };
   window.__proto__ = global;
+  global._fetch = global.fetch;
+}else{
+  window._fetch = window.fetch;
 }
 offnew = 0;
 window['variablePool'] = {};
