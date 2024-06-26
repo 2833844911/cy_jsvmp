@@ -783,10 +783,10 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
     }
 }
 
-if (!this.window){var cywindow = {"exports": exports,"require": require,"module":module,"__dirname":__dirname,"__filename":__filename};cywindow.__proto__=global;window=global};
+if (!this.window){var cywindow = {"exports": exports,"require": require,"module":module,"__dirname":__dirname,"__filename":__filename};cywindow.__proto__=global;window=global;global._fetch = global.fetch}else{window._fetch = window.fetch};
 offnew = 0
 
-window._fetch = window.fetch
+
 cywindow['variablePool'] = {}
 cywindow['zhili'] = []
 cltothis(cywindow['variablePool'],changlc.awcbb_yhh_fun0.variablePool)
