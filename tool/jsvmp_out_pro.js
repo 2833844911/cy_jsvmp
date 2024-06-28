@@ -10,7 +10,8 @@ function cltothis(cythis, poolList,off){
 
     }
 }
-function Cbb(){}
+window._fetch = window.fetch
+
 function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
     var cbb_xc = []
 
@@ -58,7 +59,8 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
         var args = []
         var cbbb = all;
     }
-    var jsq = 0,og = 0,lp= 0
+    var jsq = 0,og = 0,lp= 0;
+    Cbb([], [])
     while (!![]) {
         if (cbb_xc.length !== 0 && og == 1){
             if (lp === 0){
@@ -615,15 +617,15 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
                 else if (a3 == window.setInterval){
 
                     a4 =  setInterval(...args)
+                } else if (a3 == window._fetch){
+
+                    a4 =  _fetch(...args)
                 }
                 else if (a3 == window.RegExp){
                     a4 =  RegExp(...args)
                 }else if (a3 == window.alert){
 
                     a4 =  alert(...args)
-                }else if (a3 == window._fetch){
-
-                    a4 =  _fetch(...args)
                 }else{
                     a4 = a3.apply(all,args)
 
@@ -783,9 +785,8 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
     }
 }
 
-if (!this.window){var cywindow = {"exports": exports,"require": require,"module":module,"__dirname":__dirname,"__filename":__filename};cywindow.__proto__=global;window=global;global._fetch = global.fetch}else{window._fetch = window.fetch};
+if (!this.window){var cywindow = {"exports": exports,"require": require,"module":module,"__dirname":__dirname,"__filename":__filename};cywindow.__proto__=global;window=global};
 offnew = 0
-
 
 cywindow['variablePool'] = {}
 cywindow['zhili'] = []
