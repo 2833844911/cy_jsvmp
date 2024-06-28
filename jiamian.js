@@ -830,7 +830,7 @@ function cbbjsvmp(soure, outpath){
 
 const tst = + new Date()
 
-const soure = "test.js"
+const soure = "t3.js"
 const outpath = "./outsrc/out.js"
 cbbjsvmp(soure, outpath);
 
