@@ -41,11 +41,11 @@ function hsjsvmpTo(data){
                         if (fg[i2].node.type === "BreakStatement"){
                             continue
                         }
-                        let code = fg[i2]+'';
-                        code = code.replace(/duei\.cF/g,"duei.sf")
-                        code = code.replace(/duei\.cf/g,"duei.sf")
-                        code = code.replace(/duei\.Cf/g,"duei.sf")
-                        dat += code+"\n";
+                        // let code = fg[i2]+'';
+                        // code = code.replace(/duei\.cF/g,"duei.sf")
+                        // code = code.replace(/duei\.cf/g,"duei.sf")
+                        // code = code.replace(/duei\.Cf/g,"duei.sf")
+                        dat += "\n";
                     }
 
                     let bhu = parser.parse(dat)
