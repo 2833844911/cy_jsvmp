@@ -5,6 +5,9 @@ const {renameCj} = require("./tool/rename");
 const process = require("child_process");
 const {es6toes5} = require("./tool/es5toes6");
 
+const {switchtoif} = require("./tool/switchtoif");
+const {bindfun} = require("./tool/bindfun");
+
 // 是否转es5
 offes5 = 0
 var dat = {"instanceof": 1811,"+":20, "<":24, "*":27, "%":28, "^":29,  "/":30, "<<":31, "|":32, ">>":33, ">>>":34, "&":35, "-":19, "<=": 36, ">=":37,">":38,"==":39,"===":53,"!==":54,"!=":550,"in":551}
@@ -35,6 +38,7 @@ function cbbjsvmp(soure,outpath){
 
     // 使用插件优化代码
     ast = renameCj(ast)
+    // dataText2 = switchtoif(dataText2)
 
 
 
@@ -393,6 +397,7 @@ function cbbjsvmp(soure,outpath){
             case "BooleanLiteral":
             case "NumericLiteral":
             case "NullLiteral":
+            case "BigIntLiteral":
             case "StringLiteral":
                 zhili.push(10)
                 a1 = constantPool.indexOf(node.value)
@@ -475,7 +480,7 @@ function cbbjsvmp(soure,outpath){
                         zhili.push(10)
                         zhili.push(toPool("cbb_isokk_yhh_very_p"))
                         for (let i2 =0;i2 < node.arguments[i].arguments.length; i2++){
-                            startgetType(node.arguments[i].arguments[i2], variablePool, zhili)
+                            startgetType(node.arguments[i].arguments[node.arguments[i].arguments.length - i2-1], variablePool, zhili)
                         }
                         zhili.push(1818)
                         zhili.push(1817)
@@ -728,7 +733,8 @@ function cbbjsvmp(soure,outpath){
         }
 
 
-        for (let i =0; i< node2.params.length; i++){
+        for (let iy =0; iy< node2.params.length; iy++){
+            let i = node2.params.length-iy-1;
             if (node2.params[i].type === "AssignmentPattern"){
                 changlc[name]['variablePool'][node2.params[i].left.name] = null
                 startgetType(node2.params[i], changlc[name]['variablePool'], changlc[name]['zhili'],1)
