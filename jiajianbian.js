@@ -756,7 +756,7 @@ const outpath = "./outsrc/out.js"
 
 cbbjsvmp(soure,outpath)
 
-console.log("use time =>", +new Date() - tst)
+console.log("user time =>", +new Date() - tst)
 
 // 转es6的插件有问题 readme有方法可转
 
