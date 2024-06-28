@@ -44,6 +44,9 @@ function renameCj(ast){
             if (d.node != null &&  d.node.name.indexOf("cbb_")!==0){
                 d.scope.rename(d.node.name,"c_f_"+neNum)
                 neNum += 1
+            }else{
+                d.scope.rename(d.node.name,"cbb_"+neNum)
+                neNum += 1
             }
             var d = path.node.params
             var k =path.get("param")
