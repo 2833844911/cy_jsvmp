@@ -60,7 +60,7 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
         var cbbb = all;
     }
     var jsq = 0,og = 0,lp= 0;
-    Cbb([], [])
+
     while (!![]) {
         if (cbb_xc.length !== 0 && og == 1){
             if (lp === 0){
