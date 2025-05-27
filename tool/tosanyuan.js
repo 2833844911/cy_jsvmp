@@ -66,7 +66,13 @@ function tosanyuan(data){
         }
     }
     traverse(ast, parseDate)
-    return generator(ast).code
+    return generator(ast, {
+        minified: true,
+        comments: false,
+        jsescOption: {
+            minimal: true
+        }
+    }).code.replace('Cbb([],[]);','')
 
 }
 

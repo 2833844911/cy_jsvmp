@@ -605,32 +605,17 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
                     args.splice(0,0,duei.pop())
                 }
 
-                if (a3 == window.setTimeout){
-                    a4 = setTimeout(...args)
+                let found = false;
+                for (let key of Object.getOwnPropertyNames(window)) {
+                    if (typeof window[key] === 'function' && a3 === window[key]) {
+                        a4 = window[key](...args)
+                        found = true;
+                        break;
+                    }
                 }
-                else if (a3 == window.atob){
-
-                    a4 =  atob(...args)}
-                else if (a3 == window.clearInterval){
-
-                a4 =  clearInterval(...args)}
-                else if (a3 == window.setInterval){
-
-                    a4 =  setInterval(...args)
-                } else if (a3 == window._fetch){
-
-                    a4 =  _fetch(...args)
+                if (!found) {
+                    a4 = a3.apply(all, args)
                 }
-                else if (a3 == window.RegExp){
-                    a4 =  RegExp(...args)
-                }else if (a3 == window.alert){
-
-                    a4 =  alert(...args)
-                }else{
-                    a4 = a3.apply(all,args)
-
-                }
-
                 duei.push(a4)
                 break
             case 181:
