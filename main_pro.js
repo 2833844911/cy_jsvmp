@@ -681,7 +681,7 @@ function cbbjsvmp(soure,outpath){
 
                     zhili.push(290)
                 }
-                startgetType(node.left, variablePool, zhili,come)
+                // startgetType(node.left, variablePool, zhili,come)
                 break;
             case "ExpressionStatement":
                 startgetType(node.expression, variablePool, zhili,come)
