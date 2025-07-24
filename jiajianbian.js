@@ -636,7 +636,7 @@ function cbbjsvmp(soure,outpath){
 
                     zhili.push(RandDataCheise(zhilDx.z290))
                 }
-                startgetType(node.left, variablePool, zhili)
+                // startgetType(node.left, variablePool, zhili)
 
                 break;
             case "ExpressionStatement":
