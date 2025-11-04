@@ -326,6 +326,7 @@ function cbbjsvmp(soure, outpath){
                 let fgfgfdsujj = []
 
                 startgetType(node.body, variablePool, fgfgfdsujj)
+                let mydddd = fgfgfdsujj.length
                 startgetType(node.update, variablePool, fgfgfdsujj)
 
 
@@ -340,7 +341,7 @@ function cbbjsvmp(soure, outpath){
                         fgfgfdsujj[i+1] = lenko - i - 2
                     }else if (fgfgfdsujj[i] == "cbb_continue_in_the_this_yhh_417"){
                         fgfgfdsujj[i] = RandDataCheise(zhilDx.z190);
-                        fgfgfdsujj[i+1] =  lenko - i - 4
+                        fgfgfdsujj[i+1] = lenko-i - mydddd -1
                     }
                 }
 
