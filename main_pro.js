@@ -10,7 +10,7 @@ const {bindfun} = require("./tool/bindfun");
 
 // 是否转es5
 offes5 = 0
-var dat = {"instanceof": 1811,"+":20, "<":24, "*":27, "%":28, "^":29,  "/":30, "<<":31, "|":32, ">>":33, ">>>":34, "&":35, "-":19, "<=": 36, ">=":37,">":38,"==":39,"===":53,"!==":54,"!=":550,"in":551}
+var dat = {"instanceof": 1811,"+":20, "<":24, "*":27,"**":2777, "%":28, "^":29,  "/":30, "<<":31, "|":32, ">>":33, ">>>":34, "&":35, "-":19, "<=": 36, ">=":37,">":38,"==":39,"===":53,"!==":54,"!=":550,"in":551}
 var datkey = Object.keys(dat)
 
 for (let i = 0; i< datkey.length; i++)
@@ -163,36 +163,66 @@ function cbbjsvmp(soure,outpath){
                 copyArrayList(zhili, dyyy)
                 break
             case "UpdateExpression":
-                startgetType(node.argument, variablePool, zhili, come)
+                // 修复：对于 i++ 或 i--，应该生成正确的字节码
+                // i++ -> i = i + 1
+                // i-- -> i = i - 1
+                // obj.prop++ -> obj.prop = obj.prop + 1
 
                 if (node.operator =="++"){
-                    // zhili.push(26)
-                    zhili.pop()
-
-                    zhili.push(10)
-
-                    zhili.push(toPool(1))
-                    startgetType(node.argument, variablePool, zhili, come)
-
-
-                    zhili.push(20)
-                    zhili.push(90)
-                    startgetType(node.argument, variablePool, zhili, come)
+                    if (node.argument.type === "Identifier") {
+                        // 对于简单标识符 i++
+                        // 1. 加载 i 的值
+                        startgetType(node.argument, variablePool, zhili, come)
+                        // 2. 加载 1 并 ADD
+                        zhili.push(10)
+                        zhili.push(toPool(1))
+                        zhili.push(20)  // ADD
+                        // 3. 存储回 i
+                        zhili.push(23)  // LOAD_THIS
+                        zhili.push(22)  // STORE_ATTR
+                        zhili.push(toPool(node.argument.name))
+                    } else {
+                        // 对于成员表达式 obj.prop++
+                        // 1. 先生成左值地址（obj, 'prop'）
+                        startgetType(node.argument, variablePool, zhili, come)
+                        zhili.pop()  // 移除 LOAD_ATTR，栈: [obj, 'prop']
+                        // 2. 再次加载当前值
+                        startgetType(node.argument, variablePool, zhili, come)  // 栈: [obj, 'prop', oldValue]
+                        // 3. 加载 1 并 ADD
+                        zhili.push(10)
+                        zhili.push(toPool(1))
+                        zhili.push(20)  // 栈: [obj, 'prop', newValue]
+                        // 4. STORE_VAR
+                        zhili.push(290)
+                    }
 
                 }else if (node.operator =="--"){
-                    zhili.pop()
-                    zhili.push(10)
-
-                    zhili.push(toPool(1))
-
-                    startgetType(node.argument, variablePool, zhili, come)
-
-
-
-                    zhili.push(19)
-                    zhili.push(90)
-                    startgetType(node.argument, variablePool, zhili, come)
-
+                    if (node.argument.type === "Identifier") {
+                        // 对于简单标识符 i--
+                        // 1. 加载 i 的值
+                        startgetType(node.argument, variablePool, zhili, come)
+                        // 2. 加载 1 并 SUB
+                        zhili.push(10)
+                        zhili.push(toPool(1))
+                        zhili.push(19)  // SUB
+                        // 3. 存储回 i
+                        zhili.push(23)  // LOAD_THIS
+                        zhili.push(22)  // STORE_ATTR
+                        zhili.push(toPool(node.argument.name))
+                    } else {
+                        // 对于成员表达式 obj.prop--
+                        // 1. 先生成左值地址（obj, 'prop'）
+                        startgetType(node.argument, variablePool, zhili, come)
+                        zhili.pop()  // 移除 LOAD_ATTR，栈: [obj, 'prop']
+                        // 2. 再次加载当前值
+                        startgetType(node.argument, variablePool, zhili, come)  // 栈: [obj, 'prop', oldValue]
+                        // 3. 加载 1 并 SUB
+                        zhili.push(10)
+                        zhili.push(toPool(1))
+                        zhili.push(19)  // 栈: [obj, 'prop', newValue]
+                        // 4. STORE_VAR
+                        zhili.push(290)
+                    }
                 }
                 break
             case "LabeledStatement":
@@ -604,7 +634,12 @@ function cbbjsvmp(soure,outpath){
             case "ArrayExpression":
                 zhili.push(105)
                 for (let i=0; i< node.elements.length; i++){
-                    startgetType(node.elements[i], variablePool, zhili, come)
+                    let gy = node.elements[i]
+                    if (gy == null){
+                        gy = {type: "NullLiteral"}
+                        gy.value = undefined
+                    }
+                    startgetType(gy, variablePool, zhili, come)
                     zhili.push(40)
                 }
                 break;

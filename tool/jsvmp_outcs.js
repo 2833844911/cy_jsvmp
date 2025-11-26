@@ -9,7 +9,10 @@ function cltothis(cythis, poolList,off){
 
     }
 }
-window._fetch = window.fetch
+if (typeof window !== 'undefined') {
+    window._fetch = window.fetch
+}
+
 
 function cbb_jsvmp(all, duei, start, shuz,argsList, ogg, op) {
 
@@ -189,6 +192,13 @@ function cbb_jsvmp(all, duei, start, shuz,argsList, ogg, op) {
                 a1 = duei.pop(a5)
                 a2 = duei.pop(a6)
                 a1 = a2 * a1;
+                a7 = duei.push(a1)
+
+                break
+            case 2777:
+                a1 = duei.pop(a5)
+                a2 = duei.pop(a6)
+                a1 = a2 ** a1;
                 a7 = duei.push(a1)
 
                 break

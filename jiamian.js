@@ -13,7 +13,7 @@ const process = require("child_process");
 offes5 = 0
 
 var fornum = 0
-var dat = {"instanceof":1811,"+":20, "<":24, "*":27, "%":28, "^":29,  "/":30, "<<":31, "|":32, ">>":33, ">>>":34, "&":35, "-":19, "<=": 36, ">=":37,">":38,"==":39,
+var dat = {"instanceof":1811,"+":20, "<":24, "*":27,"**":2777, "%":28, "^":29,  "/":30, "<<":31, "|":32, ">>":33, ">>>":34, "&":35, "-":19, "<=": 36, ">=":37,">":38,"==":39,
     "===":53,"!==":54,
     "!=":550,"in":551}
 var datkey = Object.keys(dat)
@@ -45,7 +45,7 @@ function RandDataArray(data) {
 
 
 var zhil = [
-    1811,1810,551, 550, 291, 290, 252, 240, 200, 197, 195, 194, 192, 190, 181, 150, 105, 104, 90, 60, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 20, 19, 11, 10, 8, 2, 1
+    2777,1811,1810,551, 550, 291, 290, 252, 240, 200, 197, 195, 194, 192, 190, 181, 150, 105, 104, 90, 60, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 20, 19, 11, 10, 8, 2, 1
 ]
 
 zhenzhil = []
@@ -256,35 +256,52 @@ function cbbjsvmp(soure, outpath){
                 copyArrayList(zhili, dyyy)
                 break
             case "UpdateExpression":
-                startgetType(node.argument, variablePool, zhili)
+                // 修复：对于 i++ 或 i--，应该生成正确的字节码
+                // i++ -> i = i + 1
+                // i-- -> i = i - 1
+                // obj.prop++ -> obj.prop = obj.prop + 1
 
                 if (node.operator =="++"){
-                    // zhili.push(26)
-                    zhili.pop()
-
-                    zhili.push(RandDataCheise(zhilDx.z10))
-
-                    zhili.push(toPool(1))
-                    startgetType(node.argument, variablePool, zhili)
-
-
-                    zhili.push(RandDataCheise(zhilDx.z20))
-                    zhili.push(RandDataCheise(zhilDx.z90))
-                    startgetType(node.argument, variablePool, zhili)
+                    if (node.argument.type === "Identifier") {
+                        // 对于简单标识符 i++
+                        startgetType(node.argument, variablePool, zhili)
+                        zhili.push(RandDataCheise(zhilDx.z10))
+                        zhili.push(toPool(1))
+                        zhili.push(RandDataCheise(zhilDx.z20))  // ADD
+                        zhili.push(RandDataCheise(zhilDx.z23))  // LOAD_THIS
+                        zhili.push(RandDataCheise(zhilDx.z22))  // STORE_ATTR
+                        zhili.push(toPool(node.argument.name))
+                    } else {
+                        // 对于成员表达式 obj.prop++
+                        startgetType(node.argument, variablePool, zhili)
+                        zhili.pop()  // 栈: [obj, 'prop']
+                        startgetType(node.argument, variablePool, zhili)  // 栈: [obj, 'prop', oldValue]
+                        zhili.push(RandDataCheise(zhilDx.z10))
+                        zhili.push(toPool(1))
+                        zhili.push(RandDataCheise(zhilDx.z20))  // 栈: [obj, 'prop', newValue]
+                        zhili.push(RandDataCheise(zhilDx.z290))  // STORE_VAR
+                    }
 
                 }else if (node.operator =="--"){
-                    zhili.pop()
-                    zhili.push(RandDataCheise(zhilDx.z10))
-
-                    zhili.push(toPool(1))
-
-                    startgetType(node.argument, variablePool, zhili)
-
-
-
-                    zhili.push(RandDataCheise(zhilDx.z19))
-                    zhili.push(RandDataCheise(zhilDx.z90))
-                    startgetType(node.argument, variablePool, zhili)
+                    if (node.argument.type === "Identifier") {
+                        // 对于简单标识符 i--
+                        startgetType(node.argument, variablePool, zhili)
+                        zhili.push(RandDataCheise(zhilDx.z10))
+                        zhili.push(toPool(1))
+                        zhili.push(RandDataCheise(zhilDx.z19))  // SUB
+                        zhili.push(RandDataCheise(zhilDx.z23))  // LOAD_THIS
+                        zhili.push(RandDataCheise(zhilDx.z22))  // STORE_ATTR
+                        zhili.push(toPool(node.argument.name))
+                    } else {
+                        // 对于成员表达式 obj.prop--
+                        startgetType(node.argument, variablePool, zhili)
+                        zhili.pop()  // 栈: [obj, 'prop']
+                        startgetType(node.argument, variablePool, zhili)  // 栈: [obj, 'prop', oldValue]
+                        zhili.push(RandDataCheise(zhilDx.z10))
+                        zhili.push(toPool(1))
+                        zhili.push(RandDataCheise(zhilDx.z19))  // 栈: [obj, 'prop', newValue]
+                        zhili.push(RandDataCheise(zhilDx.z290))  // STORE_VAR
+                    }
                 }
                 break
             case "LabeledStatement":
@@ -326,7 +343,6 @@ function cbbjsvmp(soure, outpath){
                 let fgfgfdsujj = []
 
                 startgetType(node.body, variablePool, fgfgfdsujj)
-                let mydddd = fgfgfdsujj.length
                 startgetType(node.update, variablePool, fgfgfdsujj)
 
 
@@ -341,7 +357,7 @@ function cbbjsvmp(soure, outpath){
                         fgfgfdsujj[i+1] = lenko - i - 2
                     }else if (fgfgfdsujj[i] == "cbb_continue_in_the_this_yhh_417"){
                         fgfgfdsujj[i] = RandDataCheise(zhilDx.z190);
-                        fgfgfdsujj[i+1] = lenko-i - mydddd -1
+                        fgfgfdsujj[i+1] =  lenko - i - 4
                     }
                 }
 
@@ -721,7 +737,7 @@ function cbbjsvmp(soure, outpath){
 
                     zhili.push(RandDataCheise(zhilDx.z290))
                 }
-                // startgetType(node.left, variablePool, zhili)
+                startgetType(node.left, variablePool, zhili)
 
                 break;
             case "ExpressionStatement":
@@ -851,43 +867,43 @@ cbbjsvmp(soure, outpath);
 //     console.log("file is save ==> ./outsrc/out.js");
 // }
 
-process.exec(`uglifyjs ./outsrc/out.js --output ./outsrc/out3.js`, (error, stdout, stderr) => {
-    if (!error) {
-        console.log("压缩 ==> 成功");
-        console.log("file is save ==> ./outsrc/out3.js");
-
-        process.exec(`node ./tool/pswitch.js`, (error, stdout, stderr) => {
-        if (!error) {
-            console.log("pswitch ==> 成功");
-            console.log("file is save ==> ./outsrc/out2.js");
-            process.exec(`uglifyjs ./outsrc/out2.js --mangle --output ./outsrc/out2.js`, (error, stdout, stderr) => {
-                if (!error) {
-                    console.log("压缩 ==> 成功");
-                    console.log("file is save ==> ./outsrc/out2.js");
-                    process.exec(`node ./tool/jsdebugger.js`, (error, stdout, stderr) => {
-                            if (!error) {
-                                console.log("jsdebugger ==> 成功");
-                                console.log("file is save ==> ./outsrc/out4.js");
-                                console.log("user time =>", +new Date()-tst)
-
-                                } else {
-                                    console.log("jsdebugger ==> 失败",error);
-                                }
-                            })
-
-                    } else {``
-                        console.log("压缩 ==> 失败",error);
-                    }
-            })
-
-
-            } else {
-                console.log("pswitch ==> 失败", error);
-            }
-        })
-
-
-    } else {
-        console.log("压缩 ==> 失败", error);
-    }
-})
+// process.exec(`uglifyjs ./outsrc/out.js --output ./outsrc/out3.js`, (error, stdout, stderr) => {
+//     if (!error) {
+//         console.log("压缩 ==> 成功");
+//         console.log("file is save ==> ./outsrc/out3.js");
+//
+//         process.exec(`node ./tool/pswitch.js`, (error, stdout, stderr) => {
+//         if (!error) {
+//             console.log("pswitch ==> 成功");
+//             console.log("file is save ==> ./outsrc/out2.js");
+//             process.exec(`uglifyjs ./outsrc/out2.js --mangle --output ./outsrc/out2.js`, (error, stdout, stderr) => {
+//                 if (!error) {
+//                     console.log("压缩 ==> 成功");
+//                     console.log("file is save ==> ./outsrc/out2.js");
+//                     process.exec(`node ./tool/jsdebugger.js`, (error, stdout, stderr) => {
+//                             if (!error) {
+//                                 console.log("jsdebugger ==> 成功");
+//                                 console.log("file is save ==> ./outsrc/out4.js");
+//                                 console.log("user time =>", +new Date()-tst)
+//
+//                                 } else {
+//                                     console.log("jsdebugger ==> 失败",error);
+//                                 }
+//                             })
+//
+//                     } else {``
+//                         console.log("压缩 ==> 失败",error);
+//                     }
+//             })
+//
+//
+//             } else {
+//                 console.log("pswitch ==> 失败", error);
+//             }
+//         })
+//
+//
+//     } else {
+//         console.log("压缩 ==> 失败", error);
+//     }
+// })
