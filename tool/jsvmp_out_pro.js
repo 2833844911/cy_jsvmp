@@ -1,9 +1,9 @@
 var baoChen = []
-function cltothis(cythis, poolList,off){
-    for (let i in poolList){
-        if (off == 1){
+function cltothis(cythis, poolList, off) {
+    for (let i in poolList) {
+        if (off == 1) {
             cythis[i] = undefined
-        }else{
+        } else {
             cythis[i] = poolList[i];
 
         }
@@ -18,58 +18,58 @@ if (typeof window !== 'undefined') {
 function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
     var cbb_xc = []
 
-    function getproto(s,d,e){
+    function getproto(s, d, e) {
         let dt = s;
-        for ( ;1==1;){
-        if (s.hasOwnProperty(d)){
-            try{
-                s[d] = e
-            }catch(e2){
-                window[d] = e
-                return
-            }
-
-            break
-        }else{
-            s = s.__proto__
-            if (s == undefined || s==null){
+        for (; 1 == 1;) {
+            if (s.hasOwnProperty(d)) {
+                try {
+                    s[d] = e
+                } catch (e2) {
                     window[d] = e
                     return
+                }
+
+                break
+            } else {
+                s = s.__proto__
+                if (s == undefined || s == null) {
+                    window[d] = e
+                    return
+                }
             }
-        }
         }
     }
 
-    if (op !==undefined){
+    if (op !== undefined) {
         var allthis
         allthis = op['allthis']
         duei = op.duei
         all = op.all
         shuz = op.shuz
         argsList = op.argsList
-        var a1,a2,a3,a4,a5,a6,a7,a8,a9,j, j2,i,a10 ;
+        var a1, a2, a3, a4, a5, a6, a7, a8, a9, j, j2, i, a10;
         a7 = op.a7
         var args = op.args
         var cbbb = op.cbbb;
-    }else{
+    } else {
         var allthis
-        if (ogg !== undefined){
+        if (ogg !== undefined) {
             allthis = ogg
-        }else{
+        } else {
             allthis = all
         }
-        var a1,a2,a3,a4,a5,a6,a7,a8,a9,j, j2, i,a10;
+        var a1, a2, a3, a4, a5, a6, a7, a8, a9, j, j2, i, a10;
         var args = []
         var cbbb = all;
     }
-    var jsq = 0,og = 0,lp= 0;
+    var jsq = 0, og = 0, lp = 0;
 
     while (!![]) {
-        if (cbb_xc.length !== 0 && og == 1){
-            if (lp === 0){
+        if (cbb_xc.length !== 0 && og == 1) {
+            if (lp === 0) {
                 jsq += 1
             }
-            if (jsq === 10){
+            if (jsq === 10) {
                 a10 = []
                 a10.push(a1)
                 a10.push(a2)
@@ -83,7 +83,7 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
                 a10.push(duei)
                 a10.push(start)
                 a10.push(cbbb)
-                cbb_xc.splice(0,0, a10)
+                cbb_xc.splice(0, 0, a10)
 
 
                 a10 = cbb_xc.pop()
@@ -105,7 +105,7 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
         }
         let s_cbb = shuz[start++];
 
-        switch(s_cbb){
+        switch (s_cbb) {
             case 23:
                 all = cbbb
                 duei.push(cbbb)
@@ -141,21 +141,21 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
                 a1 = shuz[start++] * 2
                 a3 = []
                 a4 = []
-                for (a2=0; a2< a1;a2++){
-                    if (a2 < a1/2){
-                        a3.splice(0,0,duei.pop())
-                    }else{
-                        a4.splice(0,0,duei.pop())
+                for (a2 = 0; a2 < a1; a2++) {
+                    if (a2 < a1 / 2) {
+                        a3.splice(0, 0, duei.pop())
+                    } else {
+                        a4.splice(0, 0, duei.pop())
                     }
 
                 }
                 a1 = duei.pop()
-                for (a2=0; a2 < a3.length; a2++){
-                    if (a4[a2] == a1){
+                for (a2 = 0; a2 < a3.length; a2++) {
+                    if (a4[a2] == a1) {
                         start += a3[a2]
                         break
                     }
-                    else if (a4[a2] == null){
+                    else if (a4[a2] == null) {
                         start += a3[a2]
                         break
                     }
@@ -266,7 +266,7 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
                 if (!a1) {
                     start += a2;
                 }
-                ;break
+                ; break
             case 31:
                 a1 = duei.pop()
                 a2 = duei.pop()
@@ -284,7 +284,7 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
             case 26:
                 a1 = duei.pop()
                 a3 = shuz[start++]
-                a1[ constantPool[a3]] += 1
+                a1[constantPool[a3]] += 1
 
                 break
             case 190:
@@ -315,7 +315,7 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
             case 52:
                 a1 = duei.pop()
                 a3 = shuz[start++]
-                a1[ constantPool[a3]] -= 1
+                a1[constantPool[a3]] -= 1
                 break
             case 104:
                 duei.push({})
@@ -328,10 +328,10 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
                 i = []
                 a3 = shuz[start++]
                 a2 = duei.pop()
-                for (a1 in a2){
+                for (a1 in a2) {
                     i.push(a1)
                 }
-                cbbb['for_in_xh_cbb_list'+a3] = i
+                cbbb['for_in_xh_cbb_list' + a3] = i
                 break
             case 51:
                 a1 = duei.pop()
@@ -340,7 +340,7 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
                     start += a2;
                     duei.push(a1)
                 }
-                ;break
+                ; break
             case 252:
                 a1 = duei.pop()
                 a2 = shuz[start++]
@@ -348,62 +348,62 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
                     start += a2;
                     duei.push(a1)
                 }
-                ;break
+                ; break
             case 195:
                 a2 = shuz[start++]
                 a3 = shuz[start++]
                 a4 = shuz[start++]
-                try{
+                try {
                     a6 = cbb_jsvmp(a3, start, start, duei, args.length, 1, {
-                        "shuz":shuz,
-                        "cbbb":cbbb,
-                        "allthis":allthis,
-                        "argsList":argsList,
-                        "args":args,
-                        "duei":duei,
+                        "shuz": shuz,
+                        "cbbb": cbbb,
+                        "allthis": allthis,
+                        "argsList": argsList,
+                        "args": args,
+                        "duei": duei,
                         "all": all,
-                        "a7":a7
+                        "a7": a7
                     })
-                    start = a2+start;
-                    if (a6 == "-90_cbb"){
+                    start = a2 + start;
+                    if (a6 == "-90_cbb") {
                         return a6
                     }
 
-                }catch(e){
+                } catch (e) {
                     a7 = e
-                    start = a2+start;
+                    start = a2 + start;
                     a6 = cbb_jsvmp(a1, start, start, duei, args.length, 1, {
-                        "shuz":shuz,
-                        "cbbb":cbbb,
-                        "allthis":allthis,
-                        "args":args,
-                        "argsList":argsList,
-                        "duei":duei,
+                        "shuz": shuz,
+                        "cbbb": cbbb,
+                        "allthis": allthis,
+                        "args": args,
+                        "argsList": argsList,
+                        "duei": duei,
                         "all": all,
-                        "a7":a7
+                        "a7": a7
                     })
-                    if (a6 == "-90_cbb"){
+                    if (a6 == "-90_cbb") {
                         return a6
                     }
-                }finally{
-                        if (a6 == "-90_cbb"){
+                } finally {
+                    if (a6 == "-90_cbb") {
                         return a6
                     }
-                    start = a3+start;
+                    start = a3 + start;
                     a6 = cbb_jsvmp(a3, start, start, duei, args.length, 1, {
-                        "shuz":shuz,
-                        "cbbb":cbbb,
-                        "allthis":allthis,
-                        "argsList":argsList,
-                        "args":args,
-                        "duei":duei,
+                        "shuz": shuz,
+                        "cbbb": cbbb,
+                        "allthis": allthis,
+                        "argsList": argsList,
+                        "args": args,
+                        "duei": duei,
                         "all": all,
-                        "a7":a7
+                        "a7": a7
                     })
-                    if (a6 == "-90_cbb"){
+                    if (a6 == "-90_cbb") {
                         return a6
                     }
-                    start =start+ a4
+                    start = start + a4
                 }
 
 
@@ -418,7 +418,7 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
             case 8:
                 a1 = shuz[start++]
                 a2 = shuz[start++]
-                a1 = new RegExp( constantPool[a1], constantPool[a2]) ;
+                a1 = new RegExp(constantPool[a1], constantPool[a2]);
                 duei.push(a1)
 
                 break
@@ -442,63 +442,63 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
                 break
             case 1:
                 a8 = duei.length
-                for (a1=0; a1< a8; a1++){
+                for (a1 = 0; a1 < a8; a1++) {
 
                     a7 = duei.pop()
-                    if (a7 ==="cbbiyhh.online"){
+                    if (a7 === "cbbiyhh.online") {
                         break
                     }
                     let g = a7
-                    if (changlc[cbbb.variablePool[g]].isfunmr){
-                           a9 = {
-                               "variablePool":{},
+                    if (changlc[cbbb.variablePool[g]].isfunmr) {
+                        a9 = {
+                            "variablePool": {},
 
-                               "fg":changlc[cbbb.variablePool[g]].af
-                           }
-                           a9.__proto__ = cbbb
-                        cltothis(a9.variablePool,changlc[cbbb.variablePool[g]].variablePool)
-                            cltothis(a9,a9['variablePool'], 1)
-                            cbbb[g] = a9;
+                            "fg": changlc[cbbb.variablePool[g]].af
+                        }
+                        a9.__proto__ = cbbb
+                        cltothis(a9.variablePool, changlc[cbbb.variablePool[g]].variablePool)
+                        cltothis(a9, a9['variablePool'], 1)
+                        cbbb[g] = a9;
 
-                           continue
+                        continue
                     }
-                    cbbb[g] = function(){
+                    cbbb[g] = function () {
                         let g2 = []
                         var huuuu = this
-                        if (offnew == 1){
-                            offnew=0
+                        if (offnew == 1) {
+                            offnew = 0
                             a9 = {
-                                "variablePool":{},
+                                "variablePool": {},
                                 "arguments": arguments,
-                                "zhili":[]
+                                "zhili": []
                             }
                             a9.__proto__ = cbbb
-                            cltothis(a9.variablePool,changlc[cbbb.variablePool[g]].variablePool)
-                            cltothis(a9,a9['variablePool'], 1)
+                            cltothis(a9.variablePool, changlc[cbbb.variablePool[g]].variablePool)
+                            cltothis(a9, a9['variablePool'], 1)
                             cltothis(a9['zhili'], changlc[cbbb.variablePool[g]].zhili)
-                            a6 = cbb_jsvmp(a9, g2, 0, a9['zhili'],arguments, huuuu)
+                            a6 = cbb_jsvmp(a9, g2, 0, a9['zhili'], arguments, huuuu)
                             return huuuu;
-                        }else{
+                        } else {
                             a9 = {
-                                "variablePool":{},
+                                "variablePool": {},
                                 "arguments": arguments,
-                                "zhili":[]
+                                "zhili": []
                             }
-                            cltothis(a9['variablePool'],changlc[cbbb.variablePool[g]].variablePool)
-                            cltothis(a9,a9['variablePool'], 1)
+                            cltothis(a9['variablePool'], changlc[cbbb.variablePool[g]].variablePool)
+                            cltothis(a9, a9['variablePool'], 1)
                             cltothis(a9['zhili'], changlc[cbbb.variablePool[g]].zhili)
                             a9.__proto__ = cbbb
-                            a6 = cbb_jsvmp(a9, g2, 0, a9['zhili'],arguments, huuuu)
+                            a6 = cbb_jsvmp(a9, g2, 0, a9['zhili'], arguments, huuuu)
 
                         }
-                        if (g2.length == 0){
+                        if (g2.length == 0) {
                             return undefined
-                        }else{
+                        } else {
                             let h = g2.pop()
-                            for (;1==1;){
-                                if (g2.length == 0){
+                            for (; 1 == 1;) {
+                                if (g2.length == 0) {
                                     break
-                                }else{
+                                } else {
                                     g2.pop()
                                 }
                             }
@@ -510,9 +510,9 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
                 break
             case 2:
                 a1 = duei.length
-                for (a2 = 0; a2 < a1; a2++){
+                for (a2 = 0; a2 < a1; a2++) {
                     a3 = duei.shift()
-                    if (argsList[a2] != undefined ){
+                    if (argsList[a2] != undefined) {
                         cbbb[a3] = argsList[a2];
                     }
 
@@ -523,9 +523,9 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
                 a2 = duei.pop()
                 a3 = duei.pop()
 
-                if (a3.variablePool != undefined){
-                    getproto(a3,a2,a1)
-                }else{
+                if (a3.variablePool != undefined) {
+                    getproto(a3, a2, a1)
+                } else {
                     a3[a2] = a1
                 }
                 break
@@ -535,11 +535,23 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
                 a2 = duei.pop()
                 a3 = duei.pop()
 
-                if (a3.variablePool != undefined){
-                    getproto(a3,a2,a1)
-                }else{
+                if (a3.variablePool != undefined) {
+                    getproto(a3, a2, a1)
+                } else {
                     a3[a2] = a1
                 }
+                break
+            case 292:
+                a1 = duei.pop()
+                a2 = duei.pop()
+                a3 = duei.pop()
+
+                if (a3.variablePool != undefined) {
+                    getproto(a3, a2, a1)
+                } else {
+                    a3[a2] = a1
+                }
+                duei.push(a1)
                 break
             case 44:
                 a5 = duei.pop()
@@ -559,9 +571,9 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
                 a2 = duei.pop()
                 a3 = duei.pop()
 
-                if (a3.variablePool != undefined){
-                    getproto(a3,a2,a1)
-                }else{
+                if (a3.variablePool != undefined) {
+                    getproto(a3, a2, a1)
+                } else {
                     a3[a2] = a1
                 }
                 duei.push(a3)
@@ -584,9 +596,9 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
                 j = duei.pop()
                 j2 = duei.pop()
 
-                if (j2.variablePool != undefined){
-                    getproto(j2,j,a7)
-                }else{
+                if (j2.variablePool != undefined) {
+                    getproto(j2, j, a7)
+                } else {
                     j2[j] = a1
                 }
                 break
@@ -594,8 +606,8 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
                 a1 = shuz[start++]
                 a3 = duei.pop()
                 args = []
-                for (a2=0; a2<a1; a2++ ){
-                    args.splice(0,0,duei.pop())
+                for (a2 = 0; a2 < a1; a2++) {
+                    args.splice(0, 0, duei.pop())
                 }
                 offnew = 1
                 if (a3 == RegExp) {
@@ -611,8 +623,8 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
                 a1 = shuz[start++]
                 a3 = duei.pop()
                 args = []
-                for (a2=0; a2<a1; a2++ ){
-                    args.splice(0,0,duei.pop())
+                for (a2 = 0; a2 < a1; a2++) {
+                    args.splice(0, 0, duei.pop())
                 }
 
                 let found = false;
@@ -632,9 +644,9 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
                 a1 = duei.pop();
                 a2 = duei.pop();
 
-                try{
+                try {
                     a1 = a2[a1]
-                }catch(e){
+                } catch (e) {
                     a1 = window[a1]
                 }
 
@@ -667,17 +679,17 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
                 cbbb = a1
                 break
             case 1814:
-                if (og === 1){
+                if (og === 1) {
                     a10 = cbb_xc.pop()
-                    if (!a10){
+                    if (!a10) {
                         a1 = baoChen.pop()
                         shuz = a1.a1
-                        start = a1.a2+1
+                        start = a1.a2 + 1
                         duei = a1.a3
                         cbbb = a1.a4
                         og = 0
                         jsq = 0
-                    }else {
+                    } else {
                         a1 = a10[0]
                         a2 = a10[1]
                         a3 = a10[2]
@@ -696,9 +708,9 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
                     break
                 }
                 a2 = duei.pop()
-                while (1){
+                while (1) {
                     a1 = duei.pop()
-                    if (a1 === "cbbiyhh_dgggg_opopop"){
+                    if (a1 === "cbbiyhh_dgggg_opopop") {
                         break
                     }
                 }
@@ -707,24 +719,24 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
                 a1 = duei.pop()
                 a2 = duei.pop()
                 a3 = duei.pop()
-                if (a2.variablePool != undefined){
-                    getproto(a2,a1,a3)
-                }else{
+                if (a2.variablePool != undefined) {
+                    getproto(a2, a1, a3)
+                } else {
                     a2[a1] = a3
                 }
                 break
             case 1816:
                 a1 = baoChen.pop()
                 shuz = a1.a1
-                start = a1.a2+1
+                start = a1.a2 + 1
                 cbbb = a1.a4
                 duei.push(a2)
                 break
             case 1818:
                 a1 = []
-                while (1){
+                while (1) {
                     a2 = duei.pop()
-                    if (a2 === "cbb_isokk_yhh_very_p"){
+                    if (a2 === "cbb_isokk_yhh_very_p") {
                         break
                     }
                     a1.push(a2)
@@ -780,11 +792,11 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
     }
 }
 
-if (!this.window){var cywindow = {"exports": exports,"require": require,"module":module,"__dirname":__dirname,"__filename":__filename};cywindow.__proto__=global;window=global};
+if (!this.window) { var cywindow = { "exports": exports, "require": require, "module": module, "__dirname": __dirname, "__filename": __filename }; cywindow.__proto__ = global; window = global };
 offnew = 0
 
 cywindow['variablePool'] = {}
 cywindow['zhili'] = []
-cltothis(cywindow['variablePool'],changlc.awcbb_yhh_fun0.variablePool)
+cltothis(cywindow['variablePool'], changlc.awcbb_yhh_fun0.variablePool)
 cltothis(cywindow['zhili'], changlc.awcbb_yhh_fun0.zhili)
-cbb_jsvmp( cywindow, [], 0, changlc.awcbb_yhh_fun0.zhili)
+cbb_jsvmp(cywindow, [], 0, changlc.awcbb_yhh_fun0.zhili)
