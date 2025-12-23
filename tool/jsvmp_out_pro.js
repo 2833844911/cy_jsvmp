@@ -792,7 +792,7 @@ function cbb_jsvmp(all, duei, start, shuz, argsList, ogg, op) {
     }
 }
 
-if (!this.window) { var cywindow = { "exports": exports, "require": require, "module": module, "__dirname": __dirname, "__filename": __filename }; cywindow.__proto__ = global; window = global };
+if (!this.window) { var cywindow = {"process":process, "exports": exports, "require": require, "module": module, "__dirname": __dirname, "__filename": __filename }; cywindow.__proto__ = global; window = global };
 offnew = 0
 
 cywindow['variablePool'] = {}
